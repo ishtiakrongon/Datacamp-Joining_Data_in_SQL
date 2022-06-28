@@ -56,6 +56,21 @@ FROM
 -- Select code, name, and region from countries and also select year and 
 -- fertility_rate from populations (5 fields in total).
 
+SELECT
+    c.code,
+    name,
+    region,
+    year,
+    fertility_rate
+FROM
+    countries AS c
+    INNER JOIN populations AS p
+    ON c.code = p.country_code;
+
+
+--------------------------------------------------------------------------------
+
+
 
 
 
