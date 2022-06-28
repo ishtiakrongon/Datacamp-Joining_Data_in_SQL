@@ -36,3 +36,27 @@ FROM
 --------------------------------------------------------------------------------
 
 
+-- Join the tables countries (left) and economies (right) aliasing countries 
+-- AS c and economies AS e. Specify the field to match the tables ON.
+
+SELECT
+    c.code AS country_code,
+    name,
+    year,
+    inflation_rate
+FROM
+    countries AS c
+    INNER JOIN economies AS e
+    ON c.code = e.code;
+
+--------------------------------------------------------------------------------
+
+-- Inner join countries (left) and populations (right) on the code and 
+-- country_code fields respectively. Alias countries AS c and populations AS p.
+-- Select code, name, and region from countries and also select year and 
+-- fertility_rate from populations (5 fields in total).
+
+
+
+
+
