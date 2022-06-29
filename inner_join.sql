@@ -104,3 +104,22 @@ SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
     ON c.code = e.code  AND e.year = p.year;
 
 
+--------------------------------------------------------------------------------
+
+-- Inner join countries on the left and languages on the 
+-- right with USING(code)
+-- Select the fields corresponding to:
+-- country name AS country
+-- continent name
+-- language name AS language
+-- Weather or not language is official
+
+SELECT
+  c.name AS country,
+  continent,
+  l.name AS language,
+  official
+FROM
+  countries AS c
+  INNER JOIN languages AS l
+  USING (code)
