@@ -141,3 +141,65 @@ FROM populations AS p1
         AND p1.year = p2.year - 5;
 
 
+-------------------------------------------------------------------------------
+
+-- Calculating growth percentage
+
+-- Select fields with aliases
+-- Select fields with aliases
+SELECT p1.country_code,
+       p1.size AS size2010, 
+       p2.size AS size2015,
+       -- Calculate growth_perc
+       ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc
+-- From populations (alias as p1)
+FROM populations AS p1
+  -- Join to itself (alias as p2)
+  INNER JOIN populations AS p2
+    -- Match on country code
+    ON p1.country_code = p2.country_code
+        -- and year (with calculation)
+        AND p1.year = p2.year - 5;
+
+
+--------------------------------------------------------------------------------
+
+
+-- CASE WHEN AND THEN
+
+-- Using the countries table, create a new field AS geosize_group that groups 
+-- the countries into three groups:
+-- If surface_area is greater than 2 million, geosize_group is 'large'.
+-- If surface_area is greater than 350 thousand but not larger than 2 million, 
+-- geosize_group is 'medium'. Otherwise, geosize_group is 'small'.
+
+SELECT
+  name,
+  continent,
+  surface_area,
+  CASE WHEN surface_area > 2000000 THEN 'large'
+       WHEN surface_area > 350000 AND surface_area < 2000000 THEN 'medium'
+       ELSE 'small' END AS geosize_group
+FROM countries;
+
+
+--------------------------------------------------------------------------------
+-- Using the populations table focused only for the year 2015, create a new 
+-- field aliased as popsize_group to organize population size into
+-- 'large' (> 50 million),
+-- 'medium' (> 1 million), and
+-- 'small' groups.
+Select only the country code, population size, and this new popsize_group as fields.
+SELECT
+  country_code, size,
+  CASE WHEN size > 5000000 THEN 'large'
+       WHEN size > 1000000 AND size < 5000000 THEN 'medium'
+       ELSE 'small' END
+       AS popsize_group
+
+FROM
+  populations
+
+WHERE year = 2015;
+
+
