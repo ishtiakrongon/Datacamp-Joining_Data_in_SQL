@@ -189,7 +189,7 @@ FROM countries;
 -- 'large' (> 50 million),
 -- 'medium' (> 1 million), and
 -- 'small' groups.
-Select only the country code, population size, and this new popsize_group as fields.
+-- Select only the country code, population size, and this new popsize_group as fields.
 SELECT
   country_code, size,
   CASE WHEN size > 5000000 THEN 'large'
@@ -201,5 +201,28 @@ FROM
   populations
 
 WHERE year = 2015;
+
+--------------------------------------------------------------------------------
+
+
+-- LEFT JOIN
+
+-- Select the city name (with alias), the country code,
+-- the country name (with alias), the region,
+-- and the city proper population
+SELECT c1.name AS city, code, c2.name AS country,
+       region, city_proper_pop
+-- From left table (with alias)
+FROM cities AS c1
+  -- Join to right table (with alias)
+  INNER JOIN countries AS c2
+    -- Match on country code
+    ON c1.country_code = c2.code
+-- Order by descending country code
+ORDER BY code DESC;
+
+
+
+--------------------------------------------------------------------------------
 
 
