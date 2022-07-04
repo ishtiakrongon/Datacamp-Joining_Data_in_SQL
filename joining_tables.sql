@@ -336,6 +336,24 @@ ORDER BY code, year;
 -- for the economies and populations tables.
 
 
+-- Select fields
+SELECT code, year
+  -- From economies
+  FROM economies
+	-- Set theory clause
+	INTERSECT
+-- Select fields
+SELECT country_code AS code, year
+  -- From populations
+  FROM populations
+-- Order by code and year
+ORDER BY code, year;
+
+
+--------------------------------------------------------------------------------
+
+
+
 
 
 
