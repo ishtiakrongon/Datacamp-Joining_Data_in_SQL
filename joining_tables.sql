@@ -226,3 +226,16 @@ ORDER BY code DESC;
 --------------------------------------------------------------------------------
 
 
+-- FULL JOIN
+
+-- Choose records in which region corresponds to North America or is NULL.
+
+SELECT name, code, region, basic_unit
+-- FROM countries
+FROM countries
+FULL JOIN currencies
+USING (code)
+WHERE region = 'North America' OR region IS NULL
+ORDER BY region;
+
+
