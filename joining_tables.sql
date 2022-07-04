@@ -297,7 +297,7 @@ ORDER BY code, year;
 
 
 --------------------------------------------------------------------------------
-
+-- UNION
 
 -- Determine all (non-duplicated) country codes in either the cities or the 
 -- currencies table. The result should be a table with only one field called country_code.
@@ -316,6 +316,24 @@ ORDER BY country_code;
 
 
 --------------------------------------------------------------------------------
+
+-- UNION ALL
+
+SELECT country_code AS code, year
+	FROM populations
+	UNION ALL
+SELECT code, year
+	FROM economies
+ORDER BY code, year;
+
+
+
+--------------------------------------------------------------------------------
+
+-- Intersect
+
+-- Use INTERSECT to determine the records in common for country code and year 
+-- for the economies and populations tables.
 
 
 
