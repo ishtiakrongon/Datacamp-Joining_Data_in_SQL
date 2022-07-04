@@ -260,5 +260,28 @@ ORDER BY countries.name;
 --------------------------------------------------------------------------------
 
 
+-- Complete a full join with countries on the left and languages on the right.
+-- Next, full join this result with currencies on the right.
+-- Use LIKE to choose the Melanesia and Micronesia regions (Hint: 'M%esia').
+-- Select the fields corresponding to the country name AS country, region, 
+-- language name AS language.
+
+
+SELECT
+  c.name AS country,
+  region,
+  l.name AS language
+
+FROM
+  countries AS c
+FULL JOIN languages AS l
+  USING (code)
+
+WHERE region LIKE 'M%esia'
+LIMIT 15;
+
+
+--------------------------------------------------------------------------------
+
 
 
