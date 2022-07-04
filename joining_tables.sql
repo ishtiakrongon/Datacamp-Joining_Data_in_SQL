@@ -239,3 +239,26 @@ WHERE region = 'North America' OR region IS NULL
 ORDER BY region;
 
 
+--------------------------------------------------------------------------------
+
+
+-- Choose records in which countries.name starts with the capital letter 'V' or is NULL.
+-- Arrange by countries.name in ascending order to more clearly see the results.
+
+SELECT countries.name, code, languages.name AS language
+-- FROM language
+FROM languages
+  -- JOIN the countries
+  FULL JOIN countries
+  -- MATCH on code
+  USING (code)
+WHERE countries.name LIKE 'V%' OR countries.name IS NULL
+  -- ORDER by ascending countries.name
+ORDER BY countries.name;
+
+
+--------------------------------------------------------------------------------
+
+
+
+
